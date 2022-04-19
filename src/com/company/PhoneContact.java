@@ -60,23 +60,27 @@ public class PhoneContact {
         this.isMobile = isMobile;
     }
 
+    public PhoneContact() {
+
+    }
+
     public PhoneContact(Integer id, String name, String surname, String phoneNumber, Integer age, boolean isHidden, Integer isMobile) {
         this.id = id;
 
         if (Objects.equals(name, "")){
-            name = "NIEZNANE";
+            this.name = "NIEZNANE";
         } else {
             this.name = name;
         }
 
         if (Objects.equals(surname, "")){
-            surname = "NIEZNANE";
+            this.surname = "NIEZNANE";
         } else {
             this.surname = surname;
         }
 
         if (phoneNumber.length() != 9){
-            phoneNumber = "000000000";
+            this.phoneNumber = "000000000";
         } else {
             this.phoneNumber = phoneNumber;
         }
@@ -87,4 +91,7 @@ public class PhoneContact {
 
     }
 
+    public void PrintInfo(){
+        System.out.printf(" NAME: %s%n SURNAME: %s%n NUMBER: %s%n AGE: %d%n ", getName(), getSurname(), getPhoneNumber(), getAge() );
+    }
 }
