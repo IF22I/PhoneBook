@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Objects;
 
-public class PhoneContact {
+public abstract class PhoneContact {
 
     private Integer id;
     private String name;
