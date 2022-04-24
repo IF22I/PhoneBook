@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Objects;
 
-public abstract class PhoneContact {
+public abstract class PhoneContact implements PrintableContact, StorableContact {
 
     private Integer id;
     private String name;
@@ -11,6 +11,7 @@ public abstract class PhoneContact {
     private Integer age;
     private boolean isHidden;
     private Integer isMobile;
+    private static int numsCount = 0;
 
     public String getName() {
         return name;
@@ -60,6 +61,14 @@ public abstract class PhoneContact {
         this.isMobile = isMobile;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public PhoneContact() {
 
     }
@@ -95,11 +104,35 @@ public abstract class PhoneContact {
         System.out.printf(" NAME: %s%n SURNAME: %s%n NUMBER: %s%n AGE: %d%n ", getName(), getSurname(), getPhoneNumber(), getAge() );
     }
 
-    public Integer getId() {
-        return id;
+    static void printContactCard(PhoneContact phoneContact) {
+        System.out.println("ID: " + phoneContact.getId());
+        System.out.println("Imię: " + phoneContact.getName());
+        System.out.println("Nazwisko: " + phoneContact.getSurname());
+        System.out.println("Wiek: " + phoneContact.getAge());
+        System.out.println("Numer telefonu: " + phoneContact.getPhoneNumber());
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    static void printContact(PhoneContact phoneContact) {
+        System.out.println(phoneContact.getId() + " | " + phoneContact.getName() + " | " + phoneContact.getSurname() + " | " + phoneContact.getAge() + " | " + phoneContact.getPhoneNumber());
     }
+
+    static String getContact(PhoneContact phoneContact){
+        if(Objects.equals(phoneContact.getName(), "")){
+            phoneContact.setName("NIEZNANY");
+        } else if(Objects.equals(phoneContact.getSurname(), "")){
+            phoneContact.setSurname("NIEZNANY");
+        } else if(phoneContact.getPhoneNumber().length()!=9){
+            phoneContact.setPhoneNumber("000000000");
+        }
+        return  (phoneContact.getId() + " | " + phoneContact.getName() + " | " + phoneContact.getSurname() + " | " + phoneContact.getAge() + " | " + phoneContact.getPhoneNumber());
+    }
+
+    static String getContactRaw(PhoneContact phoneContact){
+        String id = phoneContact.getId().toString();
+        String age = phoneContact.getAge().toString();
+        String isMobile = phoneContact.getIsMobile().toString();
+        String wynik = (String.join(";",id,phoneContact.getName(), phoneContact.getSurname(),age, phoneContact.getSurname(),isMobile));
+        return wynik;
+    }
+
 }
