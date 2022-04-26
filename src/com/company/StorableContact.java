@@ -2,8 +2,8 @@ package com.company;
 
 public interface StorableContact {
 
-    String getContact();
+    String getContact(PhoneContact phoneContact);
 
-    String getContactRaw();
+    String getContactRaw(PhoneContact phoneContact);
 
 }

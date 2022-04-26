@@ -2,8 +2,8 @@ package com.company;
 
 public interface PrintableContact {
 
-    void printContact();
+    void printContact(PhoneContact phoneContact);
 
-    void printContactCard();
+    void printContactCard(PhoneContact phoneContact);
 
 }

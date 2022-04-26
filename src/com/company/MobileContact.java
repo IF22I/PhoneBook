@@ -1,11 +1,29 @@
 package com.company;
 
-public class MobileContact extends PhoneContact {
+import java.util.Objects;
+
+public class MobileContact extends PhoneContact implements PrintableContact, StorableContact {
+
 
     public MobileContact(Integer id, String name, String surname, String phoneNumber, Integer age, boolean isHidden, Integer isMobile) {
         super(id, name, surname, phoneNumber, age, isHidden, isMobile);
     }
 
 
+    public void printContact(PrivateContact privateContact){
+        super.printContact(privateContact);
+    }
+
+    public void printContactCard(MobileContact mobileContact) {
+        super.printContactCard(mobileContact);
+    }
+
+    public String getContact(MobileContact mobileContact) {
+        return super.getContact(mobileContact);
+    }
+
+    public String getContactRaw(MobileContact mobileContact) {
+        return super.getContact(mobileContact);
+    }
 
 }

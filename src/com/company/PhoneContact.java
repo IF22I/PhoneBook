@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Objects;
 
-public abstract class PhoneContact implements PrintableContact, StorableContact {
+public abstract class PhoneContact {
 
     private Integer id;
     private String name;
@@ -74,7 +74,9 @@ public abstract class PhoneContact implements PrintableContact, StorableContact 
     }
 
     public PhoneContact(Integer id, String name, String surname, String phoneNumber, Integer age, boolean isHidden, Integer isMobile) {
-        this.id = id;
+
+        numsCount++;
+        this.id = id+numsCount;
 
         if (Objects.equals(name, "")){
             this.name = "NIEZNANE";
@@ -104,7 +106,7 @@ public abstract class PhoneContact implements PrintableContact, StorableContact 
         System.out.printf(" NAME: %s%n SURNAME: %s%n NUMBER: %s%n AGE: %d%n ", getName(), getSurname(), getPhoneNumber(), getAge() );
     }
 
-    static void printContactCard(PhoneContact phoneContact) {
+    public void printContactCard(PhoneContact phoneContact) {
         System.out.println("ID: " + phoneContact.getId());
         System.out.println("Imię: " + phoneContact.getName());
         System.out.println("Nazwisko: " + phoneContact.getSurname());
@@ -112,11 +114,11 @@ public abstract class PhoneContact implements PrintableContact, StorableContact 
         System.out.println("Numer telefonu: " + phoneContact.getPhoneNumber());
     }
 
-    static void printContact(PhoneContact phoneContact) {
+    public void printContact(PhoneContact phoneContact) {
         System.out.println(phoneContact.getId() + " | " + phoneContact.getName() + " | " + phoneContact.getSurname() + " | " + phoneContact.getAge() + " | " + phoneContact.getPhoneNumber());
     }
 
-    static String getContact(PhoneContact phoneContact){
+    public String getContact(PhoneContact phoneContact){
         if(Objects.equals(phoneContact.getName(), "")){
             phoneContact.setName("NIEZNANY");
         } else if(Objects.equals(phoneContact.getSurname(), "")){
@@ -127,7 +129,7 @@ public abstract class PhoneContact implements PrintableContact, StorableContact 
         return  (phoneContact.getId() + " | " + phoneContact.getName() + " | " + phoneContact.getSurname() + " | " + phoneContact.getAge() + " | " + phoneContact.getPhoneNumber());
     }
 
-    static String getContactRaw(PhoneContact phoneContact){
+    public String getContactRaw(PhoneContact phoneContact){
         String id = phoneContact.getId().toString();
         String age = phoneContact.getAge().toString();
         String isMobile = phoneContact.getIsMobile().toString();
