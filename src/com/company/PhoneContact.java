@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public abstract class PhoneContact {
 
-    private Integer id;
+    private Integer id = 0;
     private String name;
     private String surname;
     private String phoneNumber;
@@ -73,7 +73,7 @@ public abstract class PhoneContact {
 
     }
 
-    public PhoneContact(Integer id, String name, String surname, String phoneNumber, Integer age, boolean isHidden, Integer isMobile) {
+    public PhoneContact(String name, String surname, String phoneNumber, Integer age, boolean isHidden, Integer isMobile) {
 
         numsCount++;
         this.id = id+numsCount;
@@ -136,5 +136,14 @@ public abstract class PhoneContact {
         String wynik = (String.join(";",id,phoneContact.getName(), phoneContact.getSurname(),age, phoneContact.getSurname(),isMobile));
         return wynik;
     }
+
+    public void addContact(int id, PhoneContact phoneContact){
+
+    }
+
+    public void removeContact(int id){
+
+    }
+
 
 }
