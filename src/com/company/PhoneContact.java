@@ -133,8 +133,7 @@ public abstract class PhoneContact {
         String id = phoneContact.getId().toString();
         String age = phoneContact.getAge().toString();
         String isMobile = phoneContact.getIsMobile().toString();
-        String wynik = (String.join(";",id,phoneContact.getName(), phoneContact.getSurname(),age, phoneContact.getSurname(),isMobile));
-        return wynik;
+        return (String.join(";",id,phoneContact.getName(), phoneContact.getSurname(),age, phoneContact.getSurname(),isMobile));
     }
 
     public void addContact(int id, PhoneContact phoneContact){
